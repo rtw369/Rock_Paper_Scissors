@@ -1,0 +1,19 @@
+<script>
+    function computerPlay() {
+        let result =  Math.floor(Math.random() * 3) //returns either 0, 1, or 2.
+
+        if(result === 2) {
+            // if result equals 2, then return rock
+            return "rock";
+        }
+        else if(result === 1) {
+            // if result equals 1, then return paper
+            return "paper";
+        }
+        else {
+            // if result doesn't equals 2 or 1, then it has to equals 0
+            // therefore return scissors
+            return "scissors";
+        }
+    }
+</script>
