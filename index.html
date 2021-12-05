@@ -16,4 +16,55 @@
             return "scissors";
         }
     }
+
+    function playRound(playerSelection, computerSelection) {
+        // need playerSelection.toLowerCase() in case player input different
+        // variations of rock, paper, or scissors
+        playerSelection = playerSelection.toLowerCase();
+        // figure out playerSelection first
+        if(playerSelection === "rock") {
+            if (computerSelection === "rock") {
+                return `It's a tie! ${playerSelection} does nothing to ${computerSelection}`;
+            }
+            else if (computerSelection === "paper") {
+                return ` You lose! ${playerSelection} gets beaten by ${computerSelection}`;
+            }
+            // computer only output rock, paper, or scissors
+            else {
+                return `You win! ${playerSelection} beats ${computerSelection}`;
+            }
+        }
+        else if(playerSelection === "paper") {
+            if (computerSelection === "rock") {
+                return `You win! ${playerSelection} beats ${computerSelection}`;
+            }
+            else if (computerSelection === "paper") {
+                return `It's a tie! ${playerSelection} does nothing to ${computerSelection}`;
+            }
+            else {
+                return ` You lose! ${playerSelection} gets beaten by ${computerSelection}`;
+            }
+        }
+        // can't be else because player might have input different variations
+        // or player might have input something else than rock, paper, or scissors
+        else if(playerSelection === "scissors") {
+            if (computerSelection === "rock") {
+                return ` You lose! ${playerSelection} gets beaten by ${computerSelection}`;
+            }
+            else if (computerSelection === "paper") {
+                return `You win! ${playerSelection} beats ${computerSelection}`;
+            }
+            else {
+                return `It's a tie! ${playerSelection} does nothing to ${computerSelection}`;
+            }
+        }
+        else {
+            return "Error, wrong input";
+        }
+    }
+
+    const playerSelection = "rOcK"
+    const computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+
 </script>
