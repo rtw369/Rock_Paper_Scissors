@@ -1,4 +1,7 @@
 <script>
+    // plays game
+    game();
+
     function computerPlay() {
         let result =  Math.floor(Math.random() * 3) //returns either 0, 1, or 2.
 
@@ -63,8 +66,45 @@
         }
     }
 
-    const playerSelection = "rOcK"
-    const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
+    function game() {
+        let playerSelection;
+
+        // to keep score
+        let playerScore = 0;
+        let computerScore = 0;
+
+        // repeat the game 5 times
+        for (let i = 1; i <= 5; i++) {
+            playerSelection = prompt("What's your choice?");
+            computerSelection = computerPlay();
+            let result = playRound(playerSelection, computerSelection);
+
+            // output result
+            console.log(result);
+
+            // keep score
+            if(result.includes("win")) {
+                playerScore++;
+            }
+            else if(result.includes("lose")) {
+                computerScore++;
+            }
+            else if (result.includes("tie")){
+                playerScore++;
+                computerScore++;
+            }
+        }
+
+        // output winner
+        if(playerScore > computerScore) {
+            console.log("You win!");
+        }
+        else if (computerScore > playerScore){
+            console.log("You lose!");
+        }
+        else {
+            console.log("It's a tie!");
+        }
+    }
 
 </script>
