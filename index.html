@@ -1,110 +1,16 @@
-<script>
-    // plays game
-    game();
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+        <meta charset="utf-8">
+        <script src="script.js" defer></script>
+    </head>
 
-    function computerPlay() {
-        let result =  Math.floor(Math.random() * 3) //returns either 0, 1, or 2.
+    <body>
+        <button id="Rock">Rock</button>
+        <button id="Paper">Paper</button>
+        <button id="Scissors">Scissors</button>
 
-        if(result === 2) {
-            // if result equals 2, then return rock
-            return "rock";
-        }
-        else if(result === 1) {
-            // if result equals 1, then return paper
-            return "paper";
-        }
-        else {
-            // if result doesn't equals 2 or 1, then it has to equals 0
-            // therefore return scissors
-            return "scissors";
-        }
-    }
-
-    function playRound(playerSelection, computerSelection) {
-        // need playerSelection.toLowerCase() in case player input different
-        // variations of rock, paper, or scissors
-        playerSelection = playerSelection.toLowerCase();
-        // figure out playerSelection first
-        if(playerSelection === "rock") {
-            if (computerSelection === "rock") {
-                return `It's a tie! ${playerSelection} does nothing to ${computerSelection}`;
-            }
-            else if (computerSelection === "paper") {
-                return ` You lose! ${playerSelection} gets beaten by ${computerSelection}`;
-            }
-            // computer only output rock, paper, or scissors
-            else {
-                return `You win! ${playerSelection} beats ${computerSelection}`;
-            }
-        }
-        else if(playerSelection === "paper") {
-            if (computerSelection === "rock") {
-                return `You win! ${playerSelection} beats ${computerSelection}`;
-            }
-            else if (computerSelection === "paper") {
-                return `It's a tie! ${playerSelection} does nothing to ${computerSelection}`;
-            }
-            else {
-                return ` You lose! ${playerSelection} gets beaten by ${computerSelection}`;
-            }
-        }
-        // can't be else because player might have input different variations
-        // or player might have input something else than rock, paper, or scissors
-        else if(playerSelection === "scissors") {
-            if (computerSelection === "rock") {
-                return ` You lose! ${playerSelection} gets beaten by ${computerSelection}`;
-            }
-            else if (computerSelection === "paper") {
-                return `You win! ${playerSelection} beats ${computerSelection}`;
-            }
-            else {
-                return `It's a tie! ${playerSelection} does nothing to ${computerSelection}`;
-            }
-        }
-        else {
-            return "Error, wrong input";
-        }
-    }
-
-    function game() {
-        let playerSelection;
-
-        // to keep score
-        let playerScore = 0;
-        let computerScore = 0;
-
-        // repeat the game 5 times
-        for (let i = 1; i <= 5; i++) {
-            playerSelection = prompt("What's your choice?");
-            computerSelection = computerPlay();
-            let result = playRound(playerSelection, computerSelection);
-
-            // output result
-            console.log(result);
-
-            // keep score
-            if(result.includes("win")) {
-                playerScore++;
-            }
-            else if(result.includes("lose")) {
-                computerScore++;
-            }
-            else if (result.includes("tie")){
-                playerScore++;
-                computerScore++;
-            }
-        }
-
-        // output winner
-        if(playerScore > computerScore) {
-            console.log("You win!");
-        }
-        else if (computerScore > playerScore){
-            console.log("You lose!");
-        }
-        else {
-            console.log("It's a tie!");
-        }
-    }
-
-</script>
+        <div id="container"></div>
+    </body>
+</html>
